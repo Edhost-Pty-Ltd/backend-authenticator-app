@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS user_totp (
+    user_id UUID PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+    totp_secret TEXT NOT NULL,
+    enabled BOOLEAN NOT NULL DEFAULT FALSE,
+    last_used_timestep BIGINT NOT NULL DEFAULT 0,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
